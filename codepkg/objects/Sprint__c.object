@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Completed_Story_Points_Percentage__c</fullName>
+        <externalId>false</externalId>
+        <formula>Completed_Story_Points__c /  Total_Story_Points__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Completed Story Points / Total (%)</inlineHelpText>
+        <label>Completed Story Points Percentage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Completed_Story_Points__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Story Points from &apos;Done&apos; status items</inlineHelpText>
+        <label>Completed Story Points</label>
+        <summarizedField>Work_Item__c.Story_Points__c</summarizedField>
+        <summaryFilterItems>
+            <field>Work_Item__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Done</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Work_Item__c.Sprint__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>End Date</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Project__c</fullName>
+        <externalId>false</externalId>
+        <label>Project</label>
+        <referenceTo>Project__c</referenceTo>
+        <relationshipLabel>Sprints</relationshipLabel>
+        <relationshipName>Sprints</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Remaining_Sprint_Days__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Name = &apos;Product Backlog&apos;, null , End_Date__c - Start_Date__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Days remaining until Sprint&apos;s end date</inlineHelpText>
+        <label>Remaining Sprint Days</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Start Date</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Total_Story_Points__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Story Points</label>
+        <summarizedField>Work_Item__c.Story_Points__c</summarizedField>
+        <summaryForeignKey>Work_Item__c.Sprint__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Uncompleted_Story_Points__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Story Points of &apos;not started&apos; and &apos;in progress&apos; items added up</inlineHelpText>
+        <label>Uncompleted Story Points</label>
+        <summarizedField>Work_Item__c.Story_Points__c</summarizedField>
+        <summaryFilterItems>
+            <field>Work_Item__c.Status__c</field>
+            <operation>notEqual</operation>
+            <value>Done</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Work_Item__c.Sprint__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <label>Sprint</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Sprint Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Sprints</pluralLabel>
+    <recordTypes>
+        <fullName>no_days_test</fullName>
+        <active>true</active>
+        <label>no days test</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>without_remaining_days</fullName>
+        <active>true</active>
+        <description>layout without remaining days</description>
+        <label>without remaining days</label>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Product_Backlog</fullName>
+        <active>false</active>
+        <description>Make name field not editable when sprint name is Product Backlog</description>
+        <errorConditionFormula>ISCHANGED(Name) &amp;&amp; priorvalue(Name) = &apos;Product Backlog&apos;</errorConditionFormula>
+        <errorMessage>Product Backlog Spring name cannot be changed. Please click on &apos;Cancel&apos;.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sprint_End_Date_1</fullName>
+        <active>true</active>
+        <description>Sprint end date should be before project end date</description>
+        <errorConditionFormula>and( 
+NOT(ISBLANK(Project__r.End_Date__c)),
+ End_Date__c &gt; Project__r.End_Date__c )</errorConditionFormula>
+        <errorMessage>Sprint End Date can&apos;t be after Project&apos;s end date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sprint_End_Date_2</fullName>
+        <active>true</active>
+        <description>sprint end date should be after sprint start date</description>
+        <errorConditionFormula>End_Date__c &lt;  Start_Date__c</errorConditionFormula>
+        <errorMessage>Sprint end date should can&apos;t be before it&apos;s start date</errorMessage>
+    </validationRules>
+</CustomObject>

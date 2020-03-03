@@ -1,0 +1,17 @@
+<apex:page standardController="Work_Item__c" extensions="WorkItemController">
+	<apex:form >
+    	<apex:pageBlock title="Work Items List" id="work_items_list">
+            
+			Filter: 
+			<apex:selectList value="{! status }" multiselect="false" size="1">
+                <apex:selectOptions value="{! items }"/>
+                <apex:actionSupport event="onchange" action="{!processRequest}" reRender="work_items_list"/>
+            </apex:selectList>
+            
+            <apex:pageBlockTable value="{! WorkItems }" var="wis"> 
+   				<apex:column value="{! wis.Name }"/>
+                <apex:actionSupport event="onchange" reRender="work_items_list"/>  
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>   
+</apex:page>
