@@ -1,0 +1,46 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global">
+    <aura:attribute name="contact" type="Contact" />
+    <aura:attribute name="recordLoadError" type="String" />
+    
+    <aura:handler event="c:ContactSelected" action="{!c.onContactSelected}" />
+    
+    <force:recordData
+                      aura:id="service"
+                      recordId="{!v.contact.Id}"
+                      fields="Name, Account.Name, Title, Email, Phone"
+                      targetFields="{!v.contact}"
+                      targetError="{!v.recordLoadError}"
+                      recordUpdated=""
+                      mode="VIEW"
+                      />
+    
+    <aura:if isTrue="{!!empty(v.contact)}">
+        
+        <lightning:card iconName="standard:contact" title="Contact Detail" >
+            <div class="slds-p-horizontal--small">
+                <div class="slds-truncate">
+                    <span class="slds-text-title_bold">Name: &nbsp;</span>
+                    <lightning:formattedRichText title="Name" value="{!v.contact.Name}" />
+                </div>
+                <div class="slds-truncate">
+                    <span class="slds-text-title_bold">Account Name: &nbsp; </span>
+                    <lightning:formattedText title="Account Name" value="{!v.contact.Account.Name}" />
+                </div>
+                <div class="slds-truncate">
+                    <span class="slds-text-title_bold">Title: &nbsp; </span>
+                    <lightning:formattedText title="Title" value="{!v.contact.Title}" />
+                </div>
+                <div class="slds-truncate">
+                    <span class="slds-text-title_bold">Phone: &nbsp; </span>
+                    <lightning:formattedPhone title="Phone" value="{!v.contact.Phone}" />
+                </div>
+                <div class="slds-truncate">
+                    <!--<span class="slds-text-title_bold">Email: &nbsp; </span>-->
+                    <lightning:formattedEmail linkify="true" title="Email" value="{!v.contact.Email}" />
+                </div>
+            </div>
+        </lightning:card> 
+        
+    </aura:if> 
+    
+</aura:component>

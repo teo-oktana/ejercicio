@@ -1,0 +1,19 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+
+    <aura:handler name="accountsearch" event="c:AccountSearch" action="{!c.onSearchSubmit}" />
+    <aura:handler name="contactlist" event="c:ContactList" action="{!c.onContactList}" />
+    
+
+    <lightning:card title="" class="slds-m-bottom_medium">
+        <c:cmp2/>
+    </lightning:card>
+    
+    <lightning:card title="Accounts" class="slds-m-bottom_medium">
+        <c:cmp3 aura:id="mysearch"/>
+    </lightning:card>
+    
+    <lightning:card title="Contacts" class="slds-m-bottom_medium">
+        <c:cmp4 aura:id="mycontacts"/>
+    </lightning:card>
+
+</aura:component>

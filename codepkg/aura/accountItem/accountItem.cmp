@@ -1,0 +1,13 @@
+<aura:component >
+	<!--<aura:handler name="init" value="{!this}" action="{!c.doInit}"/> -->
+    <aura:attribute name="account" type="Account"/>
+    <aura:registerEvent name="contactlist" type="c:ContactList" />
+    
+    <lightning:button onclick="{!c.searchContact}">
+        <lightning:card title="Account Name" iconName="standard:account">
+            <p class="slds-text-heading--small slds-p-horizontal--small slds-text-color_default">
+                {!v.account.Name}
+            </p>
+        </lightning:card>
+    </lightning:button>
+</aura:component>
