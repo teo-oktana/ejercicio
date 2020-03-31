@@ -1,0 +1,21 @@
+<aura:component >
+    <aura:attribute name="accountString" type="String" default="" />
+    
+    <aura:registerEvent name="accountsearch" type="c:AccountSearch" />
+    
+   <!-- <lightning:layout class="slds-m-vertical_x-small slds-m-horizontal_xxx-small slds-p-left_xx-small" > -->
+ 	<lightning:input class ="slds-m-horizontal_xxx-small slds-p-left_xx-small slds-p-right_xx-small"
+                     aura:id="searchform" 
+                     placeholder="Account Name"
+                     type="search"
+                     label="Search"
+					 name="Search"
+					 value="{!v.accountString}"
+					 />     
+   <!-- </lightning:layout> -->
+        <lightning:layout>
+        <lightning:layoutItem class="slds-m-vertical_x-small slds-m-horizontal_xxx-small slds-p-left_xx-small">
+      <lightning:button aura:id="searchBtn" variant="Brand" label="Search" title="Search" onclick="{!c.onSearchSubmit}" />
+    </lightning:layoutItem>
+        </lightning:layout>
+</aura:component>

@@ -1,0 +1,13 @@
+<aura:component >
+    <aura:attribute name="contact" type="Contact" />
+    
+    <aura:registerEvent name="contactselected" type="c:ContactSelected" /> 
+    
+    <lightning:button onclick="{!c.onContactSelected}">
+        <lightning:card title="Contact Name" iconName="standard:contact">
+            <p class="slds-text-heading--small slds-p-horizontal--small slds-text-color_default">
+                {!v.contact.Name} 
+            </p>
+        </lightning:card>
+    </lightning:button> 
+</aura:component>
